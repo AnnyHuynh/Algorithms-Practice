@@ -3,36 +3,31 @@
 //For example, given the list of flights [('SFO', 'HKO'), ('YYZ', 'SFO'), ('YUL', 'YYZ'), ('HKO', 'ORD')] and starting airport 'YUL', you should return the list ['YUL', 'YYZ', 'SFO', 'HKO', 'ORD'].
 //Given the list of flights [('SFO', 'COM'), ('COM', 'YYZ')] and starting airport 'COM', you should return null.
 //Given the list of flights [('A', 'B'), ('A', 'C'), ('B', 'C'), ('C', 'A')] and starting airport 'A', you should return the list ['A', 'B', 'C', 'A', 'C'] even though ['A', 'C', 'A', 'B', 'C'] is also a valid itinerary. However, the first one is lexicographically smaller.
-function findItinerary(arr, t){
-  let result = [];
-  let resLen = result.length;
-  let arr2 = [];
-  let len = arr.length;
-  let i = 0;
-  let j = 0;
-  if(len === 0 || t === 0) return null;
 
-  while(i < len && resLen === 0){
-    let element = arr[i];
-    if(element[0] === t){
-      result.push(element[0]);
-      result.push(element[1]);
-      arr2 = arr.splice(i, 1);
-    }else{
-      i++;
-    }
+var findItinerary = function(tickets, t) {
+  let result=[];
+  let map={};
+  tickets.forEach((singleTicket) =>{
+      if(map[singleTicket[0]] == undefined){
+          map[singleTicket[0]] = [];
+      }
+      map[singleTicket[0]].push(singleTicket[1]);
+  })
+  Object.entries(map).forEach((singlePro) => {
+      singlePro[1].sort();
+  })
+  console.log(map);
+  const getItineray = (from) => {
+      const tos= map[from];
+      while(tos && tos.length>0){
+          getItineray(tos.shift());
+      }
+      result.unshift(from);
   }
-  while(j < arr2.length){
-    if(arr2[j][0] === result[resLen - 1]){
-      result.push(arr2[j][1]);
-      arr2.splice(j, 1);
-    }else{
-      j++;
-    }
-  }
-  console.log(result);
+  getItineray(t);
   return result = result > 2 ? result : null;
-}
-console.log(findItinerary([['SFO', 'HKO'], ['YYZ', 'SFO'], ['YUL', 'YYZ'], ['HKO', 'ORD']], 'YUL'));
+};
+
+console.log(findItinerary([["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]], "JFK"));
 console.log(findItinerary([['SFO', 'COM'], ['COM', 'YYZ']], 'COM'));
 console.log(findItinerary([['A', 'B'], ['A', 'C'], ['B', 'C'], ['C', 'A']] , 'A'));
