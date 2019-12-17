@@ -47,20 +47,44 @@
 
 // fizzBuzz(10);
 
-function fizzBuzz(n){
-  var res = "";
+//Print on a string:
+
+//  function fizzBuzz(n){
+//    var res = "";
+//    for (var i = 1; i <= n; i++){
+//        if(i % 15 == 0){
+//          res += " fizzBuzz";
+//        }
+//        if (i % 3 == 0){
+//          res += " fizz";
+//        }
+//        if (i % 5 == 0){
+//          res += " buzz";
+//        }
+//    }
+//    return res.trim();
+//  }
+//console.log(fizzBuzz("20"));
+
+//Print on separate line:
+
+ function fizzBuzz(n){
+  var str = "";
   for (var i = 1; i <= n; i++){
       if(i % 15 == 0){
-        res += " fizzBuzz";
+        str += "\n" + "fizzbuzz"
       }
       if (i % 3 == 0){
-        res += " fizz";
+        str += "\n" + "fizz"
       }
       if (i % 5 == 0){
-        res += " buzz";
+        str += "\n" + "buzz"
       }
   }
-  return res.trim();
+return str;
 }
 
-fizzBuzz("20");
+console.log(fizzBuzz("20"));
+
+
+

@@ -16,4 +16,4 @@ var fib = function(N) {
   }
     return fib[N];
 };
-fib(5);
+console.log(fib(3));

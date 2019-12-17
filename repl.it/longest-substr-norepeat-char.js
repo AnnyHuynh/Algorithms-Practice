@@ -42,6 +42,8 @@ function lengthOfLongestSubstring(str){
       i++;
     }
   }
+  console.log(result);
   return longestStr;
 }
-lengthOfLongestSubstring("anny")
+console.log(lengthOfLongestSubstring("anny"));
+console.log(lengthOfLongestSubstring("abcadces"));
