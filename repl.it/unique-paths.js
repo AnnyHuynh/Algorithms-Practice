@@ -9,6 +9,19 @@
 
 //DP solution:
 function uniquePaths(m, n) {
-	const pathMatrix = new Array(m).fill(new Array(n).fill(1));
-	console.log(pathMatrix);
+	//there's only one way from top left corner to get to the right on the first row
+	//there's only one way from top left corner to get to the bottom of the first column.
+	//=> fill first row and first column with 1
+	const dpArr = new Array(m).fill(new Array(n).fill(1));
+	//the next number down is the sum of ways to get to the number above it plus sum of ways to get to the number on the left of it.
+	//i and j start at 1 because the first row and first column (where i = 0; j = 0) have been filled with 1.
+	for (let i = 1; i < m; i++) {
+		for (let j = 1; j < n; j++) {
+			dpArr[i][j] = dpArr[i - 1][j] + dpArr[i][j - 1];
+		}
+	}
+	//return how many ways to get the the bottom right corner.
+	return dpArr[m - 1][n - 1];
 }
+console.log(uniquePaths(3, 2));
+console.log(uniquePaths(7, 3));
