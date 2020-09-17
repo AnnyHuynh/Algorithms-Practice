@@ -15,6 +15,8 @@ public class plustOne {
 
   public static void main(String[] args) {
     int[] numArray = { 9, 9, 9 };
-    System.out.println(intIncrement(numArray)); // doesn't print out correctly. Why?
+
+    // expect {1, 0, 0, 0}. Doesn't print out correctly. Why?
+    System.out.println(intIncrement(numArray));
   }
 }
