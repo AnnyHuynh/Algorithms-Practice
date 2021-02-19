@@ -27,4 +27,5 @@ var myAtoi = function(str) {
 
 console.log(myAtoi("  -45 4"));
 console.log(myAtoi("  454"));
-myAtoi("  -45h");
+console.log(myAtoi("  -45h"));
+console.log(myAtoi("words and 987"));
