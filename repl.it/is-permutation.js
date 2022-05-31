@@ -54,3 +54,28 @@ function isPermutation(str1, str2) {
 console.log(isPermutation("catt", "tact"));
 console.log(isPermutation("catt", "katt"));
 isPermutation("catt", "ttca");
+
+var permute = function(nums) {
+    
+  let hash = {};
+  let len = nums.length;
+  
+  let helper = (starter, numbers) => { return numbers.filter((num) => num !== starter)};
+  
+  for (let i = 0; i < len; i++){
+      const numsArr = helper(nums[i], nums);
+      console.log(numsArr);
+      console.log(nums[i]);
+    
+      if(!hash[i]){
+          hash[i] = [[nums[i], ...numsArr], [nums[i], ...numsArr.reverse()]];
+          console.log(hash[i]);
+      }
+  }
+  
+  const result = Object.values(hash);
+  return result;
+  
+};
+
+console.log(permute([1,2,3]));

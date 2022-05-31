@@ -18,5 +18,5 @@ function findFactorialRecursive (n){
  }
   return n * findFactorialRecursive(n-1);
 }
-findFactorialRecursive(4);
+console.log(findFactorialRecursive(4));
 //O(n) because the # of recursive functions equal to the number of n. 

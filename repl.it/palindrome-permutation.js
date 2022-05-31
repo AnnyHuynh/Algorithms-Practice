@@ -18,6 +18,7 @@ function isPerPal(str){
     }
     charCount++;
   }
+  console.log(charCount)
   console.log(map);
   if(charCount % 2 === 0){
     return Object.keys(map).length === 0;
